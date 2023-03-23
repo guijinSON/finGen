@@ -166,7 +166,7 @@ def add_adapters(model, adapter_dim=4, p = 0.1):
           
 def get_GPTJ_peft(hf_ckpt="EleutherAI/gpt-j-6B"):
     tokenizer = transformers.AutoTokenizer.from_pretrained(hf_ckpt)
-    tokenizer.pad_token = config.eos_token_id
+    tokenizer.pad_token = tokenizer.eos_token_id
 
     model = GPTJForCausalLM.from_pretrained(hf_ckpt, low_cpu_mem_usage=True)
     add_adapters(model)
