@@ -33,6 +33,6 @@ def single_epoch_train(
             optimizer.step()
             optimizer.zero_grad()
 
-        train_epoch_loss = total_loss / len(train_loader)
-        train_ppl = torch.exp(train_epoch_loss)
-        wandb.log({"Train PPL": train_ppl})
+    train_epoch_loss = total_loss / len(train_loader)
+    train_ppl = torch.exp(train_epoch_loss)
+    wandb.log({"Train PPL": train_ppl})
