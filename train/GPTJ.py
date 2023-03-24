@@ -38,3 +38,28 @@ def single_epoch_train(
     train_epoch_loss = total_loss / len(train_loader)
     train_ppl = torch.exp(train_epoch_loss)
     wandb.log({"Train PPL": train_ppl})
+
+def single_epoch_test(
+    model, 
+    test_loader, 
+    device="cuda"
+    ):
+
+    total_loss = 0.0
+    for idx, batch in tqdm(enumerate(train_loader)):
+        seq_input_ids, seq_attention_mask = (
+            batch['seq_input_ids'].to(device),
+            batch['seq_attention_mask'].to(device)
+        )
+
+        outputs = model(
+                        input_ids = seq_input_ids,
+                        labels=seq_input_ids,
+                        attention_mask=seq_attention_mask)
+
+        loss = outputs.loss
+        total_loss += loss.detach().float()
+
+    test_epoch_loss = total_loss / len(test_loader)
+    test_ppl = torch.exp(test_epoch_loss)
+    wandb.log({"Test PPL": test_ppl})
