@@ -16,7 +16,7 @@ class Seq2SeqDataset(Dataset):
         tgt = self.tgt[idx]
         if self.type ==1:
             src = f"""
-            instruction: {self.instruction}
+            instruction: {self.instruction[idx]}
             source: {src}
             """
 
