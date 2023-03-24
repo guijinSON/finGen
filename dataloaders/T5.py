@@ -2,11 +2,11 @@ import torch
 from torch.utils.data import Dataset, DataLoader
        
 class Seq2SeqDataset(Dataset):
-    def __init__(self, src, tgt, instruction=None, option=False):
+    def __init__(self, src, tgt, type=0, instruction=None):
         self.src = src
         self.tgt = tgt
         self.instruction = instruction
-        self.option = option
+        self.type = type
 
     def __len__(self):
         return len(self.src)
@@ -14,7 +14,7 @@ class Seq2SeqDataset(Dataset):
     def __getitem__(self, idx):
         src = self.src[idx]
         tgt = self.tgt[idx]
-        if self.option:
+        if self.type ==1:
             src = f"""
             instruction: {self.instruction}
             source: {src}
