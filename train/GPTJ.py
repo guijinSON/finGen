@@ -46,7 +46,7 @@ def single_epoch_test(
     ):
 
     total_loss = 0.0
-    for idx, batch in tqdm(enumerate(train_loader)):
+    for idx, batch in tqdm(enumerate(test_loader)):
         seq_input_ids, seq_attention_mask = (
             batch['seq_input_ids'].to(device),
             batch['seq_attention_mask'].to(device)
