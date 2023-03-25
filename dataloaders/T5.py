@@ -6,7 +6,7 @@ class Seq2SeqDataset(Dataset):
         self.src = src
         self.tgt = tgt
         self.instruction = instruction
-        self.type = train_type
+        self.train_type = train_type
 
     def __len__(self):
         return len(self.src)
@@ -14,7 +14,7 @@ class Seq2SeqDataset(Dataset):
     def __getitem__(self, idx):
         src = self.src[idx]
         tgt = self.tgt[idx]
-        if self.type ==1:
+        if self.train_type ==1:
             src = f"""
             instruction: {self.instruction[idx]}
             source: {src}
