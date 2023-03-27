@@ -20,7 +20,7 @@ class Seq2SeqDataset(Dataset):
             source: {src}
             """
         elif self.train_type==2:
-            tgtidx = random.randint(0,len(tgt))
+            tgtidx = random.randint(0,len(tgt)-2)
 
             src = f"{self.instruction[idx]} {src} {' '.join(tgt[:tgtidx])}"
             tgt = random.choice(tgt[tgtidx:])
