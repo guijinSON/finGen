@@ -26,7 +26,7 @@ class Seq2SeqDataset(Dataset):
             tgt = ' '.join(tgt[tgtidx:])
         return {
             'src':src, 'tgt':tgt
-        }     }
+        }     
 
 
 class Seq2SeqBatchGenerator:
