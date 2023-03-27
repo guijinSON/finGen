@@ -23,7 +23,7 @@ class Seq2SeqDataset(Dataset):
             tgtidx = random.randint(0,len(tgt))
 
             src = f"{self.instruction[idx]} {src} {' '.join(tgt[:tgtidx])}"
-            tgt = ' '.join(tgt[tgtidx:])
+            tgt = random.choice([tgtidx:])
         return {
             'src':src, 'tgt':tgt
         }     
