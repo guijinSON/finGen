@@ -22,10 +22,12 @@ class Seq2SeqDataset(Dataset):
 
 class Seq2SeqBatchGenerator:
     def __init__(self, 
-                 tokenizer
+                 tokenizer,
+                 max_length
                  ):
         
         self.tokenizer = tokenizer
+        self.max_length = max_length
         
     def __call__(self, batch):
         seq = [item['seq2seq'] for item in batch]
@@ -40,7 +42,7 @@ class Seq2SeqBatchGenerator:
     def tokenize(self,input_str):
         return  self.tokenizer.batch_encode_plus(input_str, 
                                                     padding='longest', 
-                                                    max_length=512,
+                                                    max_length=self.max_length,
                                                     truncation=True, 
                                                     return_tensors='pt')
         
