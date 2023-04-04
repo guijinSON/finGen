@@ -61,4 +61,4 @@ def get_flanT5_peft_saved(
 
     config = PeftConfig.from_pretrained(peft_model_id)
     model = PeftModel.from_pretrained(model, peft_model_id)
-    return model,
+    return model,tokenizer
